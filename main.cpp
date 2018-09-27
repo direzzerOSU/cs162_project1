@@ -6,9 +6,9 @@
 *********************************************************************/
 
 #include "ant.hpp"
-#include "ant.cpp"
+// #include "ant.cpp"
 #include "board.hpp"
-#include "board.cpp"
+// #include "board.cpp"
 
 // using std::string;
 // using std::cout;
@@ -51,23 +51,38 @@ void menu(){
          cout << endl << "Please enter the program's parameters: " << endl;
          cout << "   Board's Number of Rows: ";
          int rows;
-         cin >> rows;
+         // cin >> rows;
          cout << "   Board's Number of Columns: ";
          int columns;
-         cin >> columns;
+         // cin >> columns;
          cout << "   Total Number of 'Steps': ";
          int steps;
-         cin >> steps;
+         // cin >> steps;
+
+         // for testing:
+         rows = 5;
+         columns = 5;
+         steps = 5;
+         cout << endl;
 
          // randomize starting position
-         int rand_x = rand() % columns + 1;
-         int rand_y = rand() % rows + 1;
+         srand(time(0));
+         // int rand_x = (rand() % (columns-2)) + 1;
+         int rand_x = 3;
+         cout << endl << "rand_x = " << rand_x << endl << endl;
+         int rand_y = 3;
+         // int rand_y = (rand() % (rows-2)) + 1;
+         cout << "rand_y = " << rand_y << endl << endl;
 
          // run program
          Board board = Board(rows, columns);
          Ant ant = Ant(rand_x, rand_y, board);
+         cout << endl << "Ant initialized..." << endl << endl;
 
-         board.print();
+         cout << "Updating location..." << endl;
+         ant.updateLocation();
+
+         cout << "Freeing memory..." << endl;
          board.freeMemory();
       }
    }

@@ -1,0 +1,29 @@
+/Users/ryandirezze/Documents/GitHub/cs162_project1/board.cpp:60:7: error: use of undeclared identifier 'cout'; did you mean 'std::cout'?
+      cout << endl << "Turn # " << turn << endl << endl;
+      ^~~~
+      std::cout
+/Library/Developer/CommandLineTools/usr/include/c++/v1/iostream:54:33: note: 'std::cout' declared here
+extern _LIBCPP_FUNC_VIS ostream cout;
+                                ^
+/Users/ryandirezze/Documents/GitHub/cs162_project1/board.cpp:60:15: error: use of undeclared identifier 'endl'; did you mean 'std::endl'?
+      cout << endl << "Turn # " << turn << endl << endl;
+              ^~~~
+              std::endl
+/Library/Developer/CommandLineTools/usr/include/c++/v1/ostream:999:1: note: 'std::endl' declared here
+endl(basic_ostream<_CharT, _Traits>& __os)
+^
+/Users/ryandirezze/Documents/GitHub/cs162_project1/board.cpp:60:44: error: use of undeclared identifier 'endl'; did you mean 'std::endl'?
+      cout << endl << "Turn # " << turn << endl << endl;
+                                           ^~~~
+                                           std::endl
+/Library/Developer/CommandLineTools/usr/include/c++/v1/ostream:999:1: note: 'std::endl' declared here
+endl(basic_ostream<_CharT, _Traits>& __os)
+^
+/Users/ryandirezze/Documents/GitHub/cs162_project1/board.cpp:60:52: error: use of undeclared identifier 'endl'; did you mean 'std::endl'?
+      cout << endl << "Turn # " << turn << endl << endl;
+                                                   ^~~~
+                                                   std::endl
+/Library/Developer/CommandLineTools/usr/include/c++/v1/ostream:999:1: note: 'std::endl' declared here
+endl(basic_ostream<_CharT, _Traits>& __os)
+^
+4 errors generated.

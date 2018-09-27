@@ -10,12 +10,17 @@
 
 #include<string>
 #include<iostream>
+using std::cout;
+using std::endl;
 
 class Board{
 private:
    int rows;
    int columns;
    std::string** board;
+   int lastx;
+   int lasty;
+   int turn = 0;
 public:
    // default constructor
    Board(int r, int c);

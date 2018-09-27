@@ -18,15 +18,20 @@ using std::string;
 
 class Ant{
 private:
-   int xcoord = 0;
-   int ycoord = 0;
+   int xcoord;
+   int ycoord;
+   // create an enum(eration) for the orientation
+   // enum direction { north, south, east, west };
+   // direction orientation;
    char orientation = 'n';
    Board* board;
 public:
    Ant(int, int, Board);
-   void updateLocation(int&, int&);
-   void updateOrientation(char&);
-   int x();
-   int y();
+   // void updateLocation(int&, int&);
+   void updateLocation();
+   // void updateOrientation(direction&);
+   int getX();
+   int getY();
+   // void move();
 };
 #endif

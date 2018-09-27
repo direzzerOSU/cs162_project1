@@ -51,5 +51,21 @@ void Board::freeMemory(){
 }
 
 void Board::updateBoard(int x, int y){
-   board[y][x] = "*";
+   if(turn == 0){
+      cout << endl << "Turn # " << turn << endl << endl;
+      board[y][x] = "*";
+      lasty = y;
+      lastx = x;
+   }
+   else{
+      cout << endl << "Turn # " << turn << endl << endl;
+      board[lasty][lastx] = " ";
+      board[y][x] = "*";
+      lasty = y;
+      lastx = x;
+   }
+   cout << "Adding 1 to 'turn'..." << endl;
+   turn += 1;
+   cout << "Turn # " << turn << endl;
+   print();
 }
