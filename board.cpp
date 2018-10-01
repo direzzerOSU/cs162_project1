@@ -50,22 +50,45 @@ void Board::freeMemory(){
    delete[] board;
 }
 
+void Board::setMaxTurns(int numTurns){
+   maxTurns = numTurns;
+}
+
+void Board::addTurn(){
+   turn += 1;
+}
+
+int Board::getSteps(){
+   return turn;
+}
+
+int Board::getMaxSteps(){
+   return maxTurns;
+}
+
 void Board::updateBoard(int x, int y){
-   if(turn == 0){
-      cout << endl << "Turn # " << turn << endl << endl;
-      board[y][x] = "*";
-      lasty = y;
-      lastx = x;
+   cout << "Adding 1 to 'turn'..." << endl;
+   // turn = turn + 1;
+   addTurn();
+   cout << "turn = " << turn << endl;
+   if(turn <= maxTurns){
+      if(turn == 0){
+         cout << endl << "Turn # " << turn << endl << endl;
+         board[y][x] = "*";
+         lasty = y;
+         lastx = x;
+      }
+      else{
+         cout << endl << "Turn # " << turn << endl << endl;
+         board[lasty][lastx] = " ";
+         board[y][x] = "*";
+         lasty = y;
+         lastx = x;
+      }
+      cout << "Turn # " << turn << endl;
+      print();
    }
    else{
-      cout << endl << "Turn # " << turn << endl << endl;
-      board[lasty][lastx] = " ";
-      board[y][x] = "*";
-      lasty = y;
-      lastx = x;
+      cout << "Game over..." << endl;
    }
-   cout << "Adding 1 to 'turn'..." << endl;
-   turn += 1;
-   cout << "Turn # " << turn << endl;
-   print();
 }

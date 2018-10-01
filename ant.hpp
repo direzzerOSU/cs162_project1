@@ -26,7 +26,7 @@ private:
    char orientation = 'n';
    Board* board;
 public:
-   Ant(int, int, Board);
+   Ant(int, int, Board&);
    // void updateLocation(int&, int&);
    void updateLocation();
    // void updateOrientation(direction&);

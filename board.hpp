@@ -18,15 +18,20 @@ private:
    int rows;
    int columns;
    std::string** board;
-   int lastx;
-   int lasty;
+   int lastx = 1;
+   int lasty = 1;
    int turn = 0;
+   int maxTurns = -35425;  // initialized value is to support debugging
 public:
    // default constructor
    Board(int r, int c);
 
+   int getSteps();
+   int getMaxSteps();
    void print();
    void freeMemory();
    void updateBoard(int x, int y);
+   void setMaxTurns(int numTurns);
+   void addTurn();
 };
 #endif

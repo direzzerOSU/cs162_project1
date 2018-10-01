@@ -7,7 +7,7 @@
 
 #include "ant.hpp"
 
-Ant::Ant(int column, int row, Board b){
+Ant::Ant(int column, int row, Board& b){
    xcoord = column;
    ycoord = row;
    board = &b;
@@ -25,13 +25,13 @@ int Ant::getY(){
 void Ant::updateLocation(){
    cout << endl << "xcoord = " << xcoord << " | ycoord = " << ycoord << endl << endl;
    if(orientation == 'n'){
-      ycoord += 1;
+      ycoord -= 1;
    }
    else if(orientation == 'e'){
       xcoord += 1;
    }
    else if(orientation == 's'){
-      ycoord -= 1;
+      ycoord += 1;
    }
    else if(orientation == 'w'){
       xcoord -= 1;
