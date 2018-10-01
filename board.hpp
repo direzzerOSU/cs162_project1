@@ -22,6 +22,7 @@ private:
    int lasty = 1;
    int turn = 0;
    int maxTurns = -35425;  // initialized value is to support debugging
+   std::string lastTileColor;
 public:
    // default constructor
    Board(int r, int c);
@@ -35,5 +36,7 @@ public:
    void addTurn();
    int getColumns();
    int getRows();
+   std::string updateTile();
+   std::string getLastTileColor();
 };
 #endif

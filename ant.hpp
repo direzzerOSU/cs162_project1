@@ -25,8 +25,11 @@ private:
 public:
    Ant(int, int, Board&);
    void updateLocation();
-   void updateOrientation();
+   void updateOrientationRight();
+   void updateOrientationLeft();
+   void tileUpdateOrientation();
    int getX();
    int getY();
+   void setOrientation(char);
 };
 #endif

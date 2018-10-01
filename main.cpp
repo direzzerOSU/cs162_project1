@@ -79,19 +79,14 @@ void menu(){
          cin >> rand_x;
          cout << "What is the y coordinate?: ";
          cin >> rand_y;
-         cout << endl << "rand_x = " << rand_x << endl << endl;
-         cout << "rand_y = " << rand_y << endl << endl;
       }
       // run program
       Board board = Board(rows, columns);
       board.setMaxTurns(steps);
       Ant ant = Ant(rand_x, rand_y, board);
-      cout << endl << "Ant initialized..." << endl << endl;
 
-      cout << "Updating location..." << endl;
-      while(board.getSteps() < board.getMaxSteps()){
+      while(board.getSteps() <= board.getMaxSteps()){
          ant.updateLocation();
-         // cout << "step # from main() = " << board.getSteps() << endl;
       }
       cout << "Freeing memory..." << endl;
       board.freeMemory();

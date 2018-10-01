@@ -66,31 +66,49 @@ int Board::getMaxSteps(){
    return maxTurns;
 }
 
+std::string Board::updateTile(){
+   if(turn == 1){
+      lastTileColor = "#";
+   }
+   else{
+      if(lastTileColor == " "){
+         lastTileColor = "#";
+      }
+      else if(lastTileColor == "#"){
+         lastTileColor = " ";
+      }
+   }
+   return lastTileColor;
+}
+
 void Board::updateBoard(int x, int y){
-   cout << "Adding 1 to 'turn'..." << endl;
-   // turn = turn + 1;
-   addTurn();
-   cout << "turn = " << turn << endl;
+   cout << endl << "Turn # " << getSteps() << endl;
+   cout << "xcoord = " << x << " | ycoord = " << y << endl;
    if(turn <= maxTurns){
       if(turn == 0){
-         cout << endl << "Turn # " << turn << endl << endl;
          board[y][x] = "*";
          lasty = y;
          lastx = x;
+         // lastTileColor = " ";
       }
       else{
-         cout << endl << "Turn # " << turn << endl << endl;
-         board[lasty][lastx] = " ";
+         updateTile();
+         board[lasty][lastx] = lastTileColor;
+         lastTileColor = board[y][x];
          board[y][x] = "*";
          lasty = y;
          lastx = x;
       }
-      cout << "Turn # " << turn << endl;
       print();
+      addTurn();
    }
    else{
       cout << "Game over..." << endl;
    }
+}
+
+std::string Board::getLastTileColor(){
+   return lastTileColor;
 }
 
 int Board::getColumns(){
