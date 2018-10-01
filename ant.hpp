@@ -20,18 +20,13 @@ class Ant{
 private:
    int xcoord;
    int ycoord;
-   // create an enum(eration) for the orientation
-   // enum direction { north, south, east, west };
-   // direction orientation;
    char orientation = 'n';
    Board* board;
 public:
    Ant(int, int, Board&);
-   // void updateLocation(int&, int&);
    void updateLocation();
-   // void updateOrientation(direction&);
+   void updateOrientation();
    int getX();
    int getY();
-   // void move();
 };
 #endif

@@ -22,19 +22,61 @@ int Ant::getY(){
    return ycoord;
 }
 
+void Ant::updateOrientation(){
+   if(orientation == 'n'){
+      orientation = 'e';
+   }
+   else if(orientation == 'e'){
+      orientation = 's';
+   }
+   else if(orientation == 's'){
+      orientation = 'w';
+   }
+   else if(orientation == 'w'){
+      orientation = 'n';
+   }
+   else{
+      cout << "Uh oh! It looks like there's something wrong with the ant's orientation..." << endl;
+   }
+}
+
 void Ant::updateLocation(){
    cout << endl << "xcoord = " << xcoord << " | ycoord = " << ycoord << endl << endl;
    if(orientation == 'n'){
-      ycoord -= 1;
+      if(ycoord == 1){
+         updateOrientation();
+         xcoord += 1;
+      }
+      else{
+         ycoord -= 1;
+      }
    }
    else if(orientation == 'e'){
-      xcoord += 1;
+      if(xcoord == (board->getColumns() - 2)){
+         updateOrientation();
+         ycoord += 1;
+      }
+      else{
+         xcoord += 1;
+      }
    }
    else if(orientation == 's'){
-      ycoord += 1;
+      if(ycoord == (board->getRows() - 2)){
+         updateOrientation();
+         xcoord -= 1;
+      }
+      else{
+         ycoord += 1;
+      }
    }
    else if(orientation == 'w'){
-      xcoord -= 1;
+      if(xcoord == 1){
+         updateOrientation();
+         ycoord -= 1;
+      }
+      else{
+         xcoord -= 1;
+      }
    }
    board->updateBoard(xcoord, ycoord);
 }

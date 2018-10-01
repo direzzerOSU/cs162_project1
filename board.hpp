@@ -33,5 +33,7 @@ public:
    void updateBoard(int x, int y);
    void setMaxTurns(int numTurns);
    void addTurn();
+   int getColumns();
+   int getRows();
 };
 #endif

@@ -6,14 +6,9 @@
 *********************************************************************/
 
 #include "ant.hpp"
-#include "ant.cpp"
+// #include "ant.cpp"
 #include "board.hpp"
-#include "board.cpp"
-
-// using std::string;
-// using std::cout;
-// using std::cin;
-// using std::endl;
+// #include "board.cpp"
 
 // funtion protoype(s)
 void menu();
@@ -54,7 +49,7 @@ void menu(){
       // for testing:
       rows = 5;
       columns = 5;
-      steps = 5;
+      steps = 100;
 
       if(tolower(decision) == 'y'){
          cout << "Okay! The ant's starting position will be randomized..." << endl;
@@ -89,7 +84,7 @@ void menu(){
       }
       // run program
       Board board = Board(rows, columns);
-      board.setMaxTurns(5);
+      board.setMaxTurns(steps);
       Ant ant = Ant(rand_x, rand_y, board);
       cout << endl << "Ant initialized..." << endl << endl;
 

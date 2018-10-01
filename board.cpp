@@ -92,3 +92,11 @@ void Board::updateBoard(int x, int y){
       cout << "Game over..." << endl;
    }
 }
+
+int Board::getColumns(){
+   return columns;
+}
+
+int Board::getRows(){
+   return rows;
+}
