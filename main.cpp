@@ -10,6 +10,9 @@
 #include "board.hpp"
 // #include "board.cpp"
 
+// TODO: verify the random coordinate values are correct
+// TODO; reopen menu after program completes asking to 'play again' or quit
+
 // funtion protoype(s)
 void menu();
 
@@ -40,55 +43,62 @@ void menu(){
       cout << "Y/N: ";
       char decision;
       cin >> decision;
+
+      if(tolower(decision) == 'y'){
+         cout << "Okay! The ant's starting position will be randomized..." << endl;
+      }
+
       int rand_x;
       int rand_y;
       int rows;
       int columns;
       int steps;
 
-      // for testing:
-      rows = 5;
-      columns = 5;
-      steps = 100;
+      // collect program parameters from the user
+      cout << endl << "Please enter the program's parameters: " << endl;
+      cout << "   Board's Number of Rows: ";
+      cin >> rows;
+      cout << "   Board's Number of Columns: ";
+      cin >> columns;
+      cout << "   Total Number of 'Steps': ";
+      cin >> steps;
+      cout << endl;
+
+      // // for testing:
+      // rows = 5;
+      // columns = 5;
+      // steps = 5;
 
       if(tolower(decision) == 'y'){
-         cout << "Okay! The ant's starting position will be randomized..." << endl;
-         cout << endl << "Please enter the program's parameters: " << endl;
-         cout << "   Board's Number of Rows: ";
-         // cin >> rows;
-         cout << "   Board's Number of Columns: ";
-         // cin >> columns;
-         cout << "   Total Number of 'Steps': ";
-         // cin >> steps;
-
-         cout << endl;
-
          // randomize starting position
          srand(time(0));
          rand_x = (rand() % (columns-2)) + 1;
-         // int rand_x;
-         cout << endl << "rand_x = " << rand_x << endl << endl;
-         // int rand_y;
+         // cout << endl << "rand_x = " << rand_x << endl << endl;
          rand_y = (rand() % (rows-2)) + 1;
-         cout << "rand_y = " << rand_y << endl << endl;
+         // cout << "rand_y = " << rand_y << endl << endl;
       }
       else if(tolower(decision) == 'n'){
          // user input starting position
          cout << "Please enter the ant's starting position..." << endl;
-         cout << "What is the x coordinate?: ";
+         cout << "What is the starting column?: ";
          cin >> rand_x;
-         cout << "What is the y coordinate?: ";
+         cout << "What is the starting row?: ";
          cin >> rand_y;
       }
+
       // run program
+
+      // initialize the program's major elements (i.e., board & ant)
       Board board = Board(rows, columns);
       board.setMaxTurns(steps);
       Ant ant = Ant(rand_x, rand_y, board);
 
+      // have the ant take a step until it has taken the (max) specified amount of steps
       while(board.getSteps() <= board.getMaxSteps()){
          ant.updateLocation();
       }
-      cout << "Freeing memory..." << endl;
+
+      // cout << "Freeing memory..." << endl;
       board.freeMemory();
    }
    else if(tolower(selection) == 'b'){
@@ -100,6 +110,7 @@ void menu(){
 int main(){
    cout << endl;
    menu();
+   cout << endl;
 
    return 0;
 }
