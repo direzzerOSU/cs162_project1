@@ -44,6 +44,14 @@ void menu(){
       char decision;
       cin >> decision;
 
+      // input validation
+      while(tolower(decision) != 'y' && tolower(decision) != 'n'){
+         cout << endl << "Uh oh... That's not a valid option. Please try again." << endl;
+         cout << "Selection: ";
+         cin >> decision;
+      }
+
+      // start the ant in a random location
       if(tolower(decision) == 'y'){
          cout << "Okay! The ant's starting position will be randomized..." << endl;
       }
@@ -72,9 +80,11 @@ void menu(){
       if(tolower(decision) == 'y'){
          // randomize starting position
          srand(time(0));
-         rand_x = (rand() % (columns-2)) + 1;
+         // rand_x = (rand() % (columns-2)) + 1;
+         rand_x = (rand() % columns) + 1;
          // cout << endl << "rand_x = " << rand_x << endl << endl;
-         rand_y = (rand() % (rows-2)) + 1;
+         // rand_y = (rand() % (rows-2)) + 1;
+         rand_y = (rand() % rows) + 1;
          // cout << "rand_y = " << rand_y << endl << endl;
       }
       else if(tolower(decision) == 'n'){
