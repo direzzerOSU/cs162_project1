@@ -18,9 +18,9 @@
 int main(){
    cout << endl;
    bool status = true;
-   while(status != false){
+   do{
       menu(status);
-   }
+   } while(status != false);
    cout << endl;
 
    return 0;
