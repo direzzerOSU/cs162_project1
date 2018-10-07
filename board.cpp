@@ -14,7 +14,7 @@ Board::Board(int r, int c){
    board = new std::string*[rows];
    for(int a=0; a<rows; a++){
       board[a] = new std::string[columns];
-      for(int b=1; b<columns; b++){
+      for(int b=0; b<columns; b++){
          board[a][b] = " ";
       }
    }
