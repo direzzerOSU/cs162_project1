@@ -17,10 +17,15 @@
 
 int main(){
    cout << endl;
+
+   // initialize the game status; true = active
    bool status = true;
+
+   // display the menu to begin/replay the program until the user chooses to quit
    do{
       menu(status);
    } while(status != false);
+
    cout << endl;
 
    return 0;

@@ -1,11 +1,15 @@
+/*********************************************************************
+** Program name: Langton's Ant Rule
+** Author: Ryan DiRezze
+** Date: October 7, 2018
+** Description: Implements all functions, which are callable by objects
+   of type Board, including the constructor of objects of type Board.
+*********************************************************************/
 
+// include the Board header with its class defined and function prototypes
 #include "board.hpp"
 
-// void Board::print();
-
-// class Board;
-
-// default constructor
+// constructor for creating a Board object
 Board::Board(int r, int c){
    rows = r + 2;
    columns = c + 2;
@@ -33,6 +37,7 @@ Board::Board(int r, int c){
    }
 }
 
+// prints the Board with each tile (within the board) properly reflected with color and the ant's location
 void Board::print(){
    for(int r=0; r<rows; r++){
       for(int c=0; c<columns; c++){
@@ -43,6 +48,7 @@ void Board::print(){
    }
 }
 
+// free the dynamically allocated memory of the Board object
 void Board::freeMemory(){
    for(int r=0; r<rows; r++){
       delete[] board[r];
@@ -50,22 +56,27 @@ void Board::freeMemory(){
    delete[] board;
 }
 
+// defines the max number of steps that an Ant object can take on the board per game
 void Board::setMaxTurns(int numTurns){
    maxTurns = numTurns;
 }
 
+// keeps track of the number of steps taken by the Ant
 void Board::addTurn(){
    turn += 1;
 }
 
+// returns the number of steps taken by the Ant object
 int Board::getSteps(){
    return turn;
 }
 
+// returns the max number of steps the Ant can take within a particular game
 int Board::getMaxSteps(){
    return maxTurns;
 }
 
+// updates a tile's color within the Board object
 std::string Board::updateTile(){
    if(turn == 1){
       lastTileColor = "#";
@@ -81,6 +92,7 @@ std::string Board::updateTile(){
    return lastTileColor;
 }
 
+// updates the Board object with the ant's location and the color of its tiles
 void Board::updateBoard(int x, int y){
    cout << endl << "Turn # " << getSteps() << endl;
    cout << "xcoord = " << x << " | ycoord = " << y << endl;
@@ -107,14 +119,17 @@ void Board::updateBoard(int x, int y){
    }
 }
 
+// returns the color of the tile that the Ant was last located
 std::string Board::getLastTileColor(){
    return lastTileColor;
 }
 
+// return the number of columns on the Board
 int Board::getColumns(){
    return columns;
 }
 
+// return the number of rows on the Board
 int Board::getRows(){
    return rows;
 }

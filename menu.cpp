@@ -1,21 +1,33 @@
+/*********************************************************************
+** Program name: Langton's Ant Rule
+** Author: Ryan DiRezze
+** Date: October 7, 2018
+** Description: Defines and implements the menu function, which is
+   used to begin/exit the program and collect program attributes.
+*********************************************************************/
+
 // include function header & prototype(s)
 #include "menu.hpp"
 #include "board.hpp"
 #include "ant.hpp"
 #include "inputValidation.hpp"
 
+// menu that guides the user through beginning the program (or quitting/exiting), then asks the user
+// for all required inputs to begin the program (i.e., board attributes & ant's starting position)
 void menu(bool& status){
    // introduction
    string program_name = "Langton's Ant Simulation";
    cout << "Hello! Welcome to Ryan's " << program_name << " Program:" << endl;
 
-   // bool status = true;
-
+   // continue to repeatedly display the menu until the user chooses to exit the program;
+   // menu will repeatedly display after completing each game
    while(status == true){
       // user input
       cout << "Please select an option from below:" << endl;
       cout << "   a. Start " << program_name << endl;
       cout << "   b. Quit" << endl << endl;
+
+      // selection is used to determine whether the program is executed or the program exits
       char selection = ' ';
       cout << "Selection: ";
       cin >> selection;
@@ -51,6 +63,7 @@ void menu(bool& status){
             cout << endl << "Okay! The ant's starting position will not be randomized..." << endl;
          }
 
+         // initialize board and ant attributes
          int rand_x;
          int rand_y;
          int rows;
@@ -79,14 +92,16 @@ void menu(bool& status){
          inputValidation(steps);
          // cout << "steps = " << steps << endl;   // testing
 
+         // execute if the user chose to randomize the ant's starting location on the board
          if(tolower(decision) == 'y'){
-            // randomize starting position
+            // update rand()'s seed to generate a new series of random numbers each time the program executes
             srand(time(0));
             rand_x = (rand() % columns) + 1;
             // cout << endl << "rand_x = " << rand_x << endl << endl;
             rand_y = (rand() % rows) + 1;
             // cout << "rand_y = " << rand_y << endl << endl;
          }
+         // execute if the user chose to specify the ant's starting location on the board (not randomized)
          else if(tolower(decision) == 'n'){
             // user input starting position
             cout << "Please enter the ant's starting position..." << endl;
@@ -119,6 +134,7 @@ void menu(bool& status){
       else if(tolower(selection) == 'b'){
          // quit program
          cout << endl << "Exiting program..." << endl;
+         // allows the program to exit the loop by changing the value of status (exits the program)
          status = false;
       }
    }

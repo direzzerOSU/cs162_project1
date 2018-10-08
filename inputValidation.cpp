@@ -1,5 +1,15 @@
+/*********************************************************************
+** Program name: Langton's Ant Rule
+** Author: Ryan DiRezze
+** Date: October 7, 2018
+** Description: Implements an input validation function, which is used
+   when receiving various user-specified attribute values.
+*********************************************************************/
+
+// include the function's header with its function prototype
 #include "inputValidation.hpp"
 
+// prompts the user to re-enter the intended attribute's value
 void inputValidation(int& value){
    while(cin.fail()){
       cin.clear();
