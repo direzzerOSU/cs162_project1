@@ -17,7 +17,7 @@ HEADERS = ant.hpp board.hpp menu.hpp inputValidation.hpp
 #	rule to build
 #
 
-matrix: ${SRCS} ${HEADERS}
+ant: ${SRCS} ${HEADERS}
 	${CXX} ${CXXFLAGS} ${SRCS} -o ant
 
 #${OBJS}: ${SRCS}
