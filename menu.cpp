@@ -41,34 +41,12 @@ void menu(bool& status){
 
       // program selection
       if(tolower(selection) == 'a'){
-         // initialize program inputs
-         cout << endl << "Would you like the ant to start in a random location?" << endl << endl;
-         cout << "Y/N: ";
-         char decision;
-         cin >> decision;
-
-         // input validation
-         while(tolower(decision) != 'y' && tolower(decision) != 'n'){
-            cout << endl << "Uh oh... That's not a valid option. Please try again." << endl << endl;
-            cout << "Selection: ";
-            cin >> decision;
-         }
-
-         // start the ant in a random location
-         if(tolower(decision) == 'y'){
-            cout << endl << "Okay! The ant's starting position will be randomized..." << endl;
-         }
-
-         if(tolower(decision) == 'n'){
-            cout << endl << "Okay! The ant's starting position will not be randomized..." << endl;
-         }
-
          // initialize board and ant attributes
-         int rand_x;
-         int rand_y;
          int rows;
          int columns;
          int steps;
+         int doodlebugs;
+         int ants;
 
          // collect program parameters from the user
          cout << endl << "Please enter the program's parameters: " << endl;
@@ -78,45 +56,33 @@ void menu(bool& status){
          cin >> rows;
          cout << endl;
          inputValidation(rows);
-         // cout << "rows = " << rows << endl;  // testing
 
          cout << "   Board's Number of Columns: ";
          cin >> columns;
          cout << endl;
          inputValidation(columns);
-         // cout << "columns = " << columns << endl;  // testing
 
          cout << "   Total Number of 'Steps': ";
          cin >> steps;
          cout << endl;
          inputValidation(steps);
-         // cout << "steps = " << steps << endl;   // testing
 
-         // execute if the user chose to randomize the ant's starting location on the board
-         if(tolower(decision) == 'y'){
-            // update rand()'s seed to generate a new series of random numbers each time the program executes
-            srand(time(0));
-            rand_x = (rand() % columns) + 1;
-            // cout << endl << "rand_x = " << rand_x << endl << endl;
-            rand_y = (rand() % rows) + 1;
-            // cout << "rand_y = " << rand_y << endl << endl;
-         }
-         // execute if the user chose to specify the ant's starting location on the board (not randomized)
-         else if(tolower(decision) == 'n'){
-            // user input starting position
-            cout << "Please enter the ant's starting position..." << endl;
-            cout << "What is the starting column?: ";
-            cin >> rand_x;
-            cout << "What is the starting row?: ";
-            cin >> rand_y;
-         }
+         cout << "   Total Number of 'Ants': ";
+         cin >> ants;
+         cout << endl;
+         inputValidation(ants);
+
+         cout << "   Total Number of 'Doodlebugs': ";
+         cin >> doodlebugs;
+         cout << endl;
+         inputValidation(doodlebugs);
 
          // run program
 
-         // initialize the program's major elements (i.e., board & ant)
+         // initialize the program's major elements (i.e., board, doodlebugs & ants)
          Board board = Board(rows, columns);
          board.setMaxTurns(steps);
-         Ant ant = Ant(rand_x, rand_y, board);
+         //Ant ant = Ant(rand_x, rand_y, board);
 
          // have the ant take a step until it has taken the (max) specified amount of steps
          while(board.getSteps() <= board.getMaxSteps()){
